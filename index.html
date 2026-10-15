@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0E6B54">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Afluencia">
+<title>Afluencia · Marina de A Coruña</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E6B54'/%3E%3Cpath d='M14 40h36l-5 9H19z' fill='white'/%3E%3Cpath d='M30 14v24M30 16l12 16H30' stroke='white' stroke-width='4' fill='white' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230E6B54'/%3E%3Cpath d='M14 40h36l-5 9H19z' fill='white'/%3E%3Cpath d='M30 14v24M30 16l12 16H30' stroke='white' stroke-width='4' fill='white' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#F5F7F4;--card:#fff;--card2:#EDF1EC;--line:#D6DDD6;--ink:#15211D;--ink2:#4A5A54;--ink3:#7C8B85;
+  --acc:#0E6B54;--acc-soft:#DDEEE7;
+  --fuerte:#B3341C;--fuerte-soft:#F9E3DD;--normal:#A8650A;--normal-soft:#FBEBD2;--tranquilo:#3A6C9E;--tranquilo-soft:#DFEAF5;--base:#8A968F;--base-soft:#EEF1EE;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#121A17;--card:#1A2420;--card2:#22302A;--line:#2E3D36;--ink:#EAF0EC;--ink2:#AEBBB4;--ink3:#7E8D86;
+  --acc:#4FBF9C;--acc-soft:#1E3A31;
+  --fuerte:#F08A6E;--fuerte-soft:#452019;--normal:#E5A84A;--normal-soft:#3F2E12;--tranquilo:#7FB0E0;--tranquilo-soft:#1C2F44;--base:#7E8D86;--base-soft:#22302A;
+}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:980px;margin:0 auto;padding:16px 16px 48px}
+header{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+h1{margin:0;font-size:22px;letter-spacing:-.01em}
+.sub{color:var(--ink2);font-size:13px}
+.tabs{display:flex;gap:4px;background:var(--card2);padding:4px;border-radius:10px;margin:12px 0 14px;width:max-content}
+.tabs button{border:0;background:none;color:var(--ink2);font:600 14px inherit;padding:8px 16px;border-radius:7px;cursor:pointer;font-family:inherit}
+.tabs button[aria-selected=true]{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px}
+.nav b{font-size:16px}
+.nav button{border:1px solid var(--line);background:var(--card);color:var(--ink);min-width:40px;height:40px;border-radius:9px;font-size:18px;cursor:pointer}
+.nav button:disabled{opacity:.35}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.chip::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.c-fuerte{color:var(--fuerte);background:var(--fuerte-soft)}.c-normal{color:var(--normal);background:var(--normal-soft)}
+.c-tranquilo{color:var(--tranquilo);background:var(--tranquilo-soft)}.c-base{color:var(--base);background:var(--base-soft)}
+.day{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:8px;display:grid;grid-template-columns:52px 1fr;gap:12px}
+.day.hoy{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.day.pasado{opacity:.55}
+.when b{display:block;font-size:24px;line-height:1}
+.when span{font-size:12px;color:var(--ink2);text-transform:uppercase;letter-spacing:.05em}
+.head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px}
+.head .n{font-size:13px;color:var(--ink2)}
+.item{font-size:14px;margin:4px 0}
+.item .t{font-variant-numeric:tabular-nums;color:var(--ink2);font-size:13px;margin-right:6px}
+.item small{color:var(--ink3)}
+.franja{margin-top:6px;font-size:13px;padding:6px 9px;border-radius:7px;background:var(--card2);color:var(--ink2)}
+.franja b{color:var(--ink)}
+.vacio{color:var(--ink3);font-size:13px}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.cal .h{text-align:center;font-size:11px;color:var(--ink3);font-weight:700;padding-bottom:2px}
+.cell{min-height:58px;border-radius:8px;padding:5px 6px;background:var(--card);border:1px solid var(--line);font-size:11px;cursor:pointer;min-width:0;overflow:hidden}
+.cell.pad{background:none;border:0;cursor:default}
+.cell .d{font-weight:700;font-size:13px}
+.cell .q{font-variant-numeric:tabular-nums}
+.cell.l-fuerte{background:var(--fuerte-soft);border-color:transparent;color:var(--fuerte)}
+.cell.l-normal{background:var(--normal-soft);border-color:transparent;color:var(--normal)}
+.cell.l-tranquilo{background:var(--tranquilo-soft);border-color:transparent;color:var(--tranquilo)}
+.cell.hoy{outline:2px solid var(--ink);outline-offset:-2px}
+.leyenda{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}
+.nota{font-size:12.5px;color:var(--ink3);margin-top:14px;line-height:1.5}
+.aviso{background:var(--acc-soft);color:var(--ink);border-radius:10px;padding:10px 12px;font-size:13.5px;margin-bottom:12px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Afluencia en la Marina</h1>
+      <div class="sub">Cruceros y eventos cerca de María Pita, O Parrote y la Marina</div>
+    </div>
+    <div class="sub" id="act"></div>
+  </header>
+  <div class="aviso" id="aviso" hidden></div>
+  <div class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-v="semana">Semana</button>
+    <button role="tab" aria-selected="false" data-v="mes">Mes</button>
+  </div>
+
+  <section id="v-semana">
+    <div class="nav"><button id="sp" aria-label="Semana anterior">‹</button><b id="st"></b><button id="sn" aria-label="Semana siguiente">›</button></div>
+    <div id="semana"></div>
+  </section>
+
+  <section id="v-mes" hidden>
+    <div class="nav"><button id="mp" aria-label="Mes anterior">‹</button><b id="mt"></b><button id="mn" aria-label="Mes siguiente">›</button></div>
+    <div class="cal" id="cal"></div>
+    <div class="leyenda" id="ley"></div>
+  </section>
+
+  <p class="nota" id="nota"></p>
+</div>
+
+<script id="datos" type="application/json">{"generado": "2026-10-15 12:13", "dias": [{"fecha": "2026-10-12", "dia_semana": 0, "escalas": [{"id": 750, "fecha": "2026-10-12", "llegada": "07:00", "salida": "17:30", "horas": 10.5, "barco": "ARVIA", "naviera": "P&O Cruises", "consignataria": "RUBINE", "pax": 6685, "de": "Southampton", "a": "Malaga", "muelle": "TRASATLANTICOS", "factor": 0.5, "quedan": 3340}], "eventos": [], "pax": 6685, "quedan": 3340, "gente_eventos": 0, "total": 3340, "nivel": "fuerte", "estimado": true, "franja": "08:00 a 12:00"}, {"fecha": "2026-10-13", "dia_semana": 1, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-10-14", "dia_semana": 2, "escalas": [{"id": 751, "fecha": "2026-10-14", "llegada": "06:45", "salida": "16:00", "horas": 9.2, "barco": "Queen Victoria", "naviera": "Cunard Line", "consignataria": "RUBINE", "pax": 2250, "de": "Lisboa", "a": "Southampton", "muelle": "TRASATLANTICOS", "factor": 0.5, "quedan": 1120}], "eventos": [], "pax": 2250, "quedan": 1120, "gente_eventos": 0, "total": 1120, "nivel": "normal", "estimado": true, "franja": "07:45 a 11:45"}, {"fecha": "2026-10-15", "dia_semana": 3, "escalas": [{"id": 754, "fecha": "2026-10-15", "llegada": "06:30", "salida": "17:00", "horas": 10.5, "barco": "IONA", "naviera": "P&O Cruises", "consignataria": "RUBINE", "pax": 6264, "de": "Vigo", "a": "Southampton", "muelle": "TRASATLANTICOS", "factor": 0.5, "quedan": 3130}, {"id": 753, "fecha": "2026-10-15", "llegada": "07:00", "salida": "18:00", "horas": 11.0, "barco": "Hanseatic Spirit", "naviera": "Hapag Lloyd", "consignataria": "RUBINE", "pax": 230, "de": "Gijón", "a": "Viana Do Bolo (P)", "muelle": "CALVO SOTELO NORTE", "factor": 0.5, "quedan": 120}, {"id": 752, "fecha": "2026-10-15", "llegada": "07:00", "salida": "18:00", "horas": 11.0, "barco": "Mein Schiff 3", "naviera": "TUI Cruises", "consignataria": "RUBINE", "pax": 2506, "de": "Cherbourgo", "a": "Leixoes", "muelle": "CALVO SOTELO SUR", "factor": 0.5, "quedan": 1250}], "eventos": [], "pax": 9000, "quedan": 4500, "gente_eventos": 0, "total": 4500, "nivel": "fuerte", "estimado": true, "franja": "07:30 a 12:00"}, {"fecha": "2026-10-16", "dia_semana": 4, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-10-17", "dia_semana": 5, "escalas": [{"id": 911, "fecha": "2026-10-17", "llegada": "10:00", "salida": "19:00", "horas": 9.0, "barco": "AIDAmar", "naviera": "AIDA Cruises", "consignataria": "PÉREZ Y CÍA", "pax": 2194, "de": "Dover", "a": "Leixoes", "muelle": "TRASATLANTICOS", "factor": 0.5, "quedan": 1100}], "eventos": [{"fecha": "2026-10-17", "hora_inicio": "10:00", "hora_fin": "14:00", "sitio": "La Marina", "que": "Carrera ENKI (del Obelisco a O Parrote)", "asistencia": 15000, "fuente": "planomato.com (15.000 participantes en 2025); confirmar con la Fundación ENKI"}], "pax": 2194, "quedan": 1100, "gente_eventos": 15000, "total": 16100, "nivel": "fuerte", "estimado": true, "franja": "10:00 a 15:00"}, {"fecha": "2026-10-18", "dia_semana": 6, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-10-19", "dia_semana": 0, "escalas": [{"id": 739, "fecha": "2026-10-19", "llegada": "07:45", "salida": "17:00", "horas": 9.2, "barco": "Ventura", "naviera": "P&O Cruises", "consignataria": "RUBINE", "pax": 3597, "de": "Southampton", "a": "Gijón", "muelle": "CALVO SOTELO SUR", "factor": 0.5, "quedan": 1800}, {"id": 1397, "fecha": "2026-10-19", "llegada": "08:00", "salida": "19:00", "horas": 11.0, "barco": "Mein Schiff Flow", "naviera": "TUI Cruises", "consignataria": "RUBINE", "pax": 3984, "de": "Cadiz", "a": "Le Havre", "muelle": "TRASATLANTICOS", "factor": 0.5, "quedan": 1990}], "eventos": [], "pax": 7581, "quedan": 3790, "gente_eventos": 0, "total": 3790, "nivel": "fuerte", "estimado": true, "franja": "08:45 a 13:00"}, {"fecha": "2026-10-20", "dia_semana": 1, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-10-21", "dia_semana": 2, "escalas": [{"id": 755, "fecha": "2026-10-21", "llegada": "07:00", "salida": "17:00", "horas": 10.0, "barco": "IONA", "naviera": "P&O Cruises", "consignataria": "RUBINE", "pax": 6264, "de": "Vigo", "a": "Southampton", "muelle": "TRASATLANTICOS", "factor": 0.5, "quedan": 3130}, {"id": 912, "fecha": "2026-10-21", "llegada": "10:30", "salida": "20:00", "horas": 9.5, "barco": "AIDAsol", "naviera": "AIDA Cruises", "consignataria": "PÉREZ Y CÍA", "pax": 2686, "de": "Hamburgo", "a": "Las Palmas", "muelle": "CALVO SOTELO SUR", "factor": 0.5, "quedan": 1340}], "eventos": [], "pax": 8950, "quedan": 4470, "gente_eventos": 0, "total": 4470, "nivel": "fuerte", "estimado": true, "franja": "08:00 a 15:30"}, {"fecha": "2026-10-22", "dia_semana": 3, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-10-23", "dia_semana": 4, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-10-24", "dia_semana": 5, "escalas": [{"id": 913, "fecha": "2026-10-24", "llegada": "10:00", "salida": "19:30", "horas": 9.5, "barco": "AIDAprima", "naviera": "AIDA Cruises", "consignataria": "PÉREZ Y CÍA", "pax": 3300, "de": "Gijón", "a": "Leixoes", "muelle": "TRASATLANTICOS", "factor": 0.5, "quedan": 1650}], "eventos": [], "pax": 3300, "quedan": 1650, "gente_eventos": 0, "total": 1650, "nivel": "normal", "estimado": true, "franja": "11:00 a 15:00"}, {"fecha": "2026-10-25", "dia_semana": 6, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-10-26", "dia_semana": 0, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-10-27", "dia_semana": 1, "escalas": [{"id": 756, "fecha": "2026-10-27", "llegada": "10:00", "salida": "19:00", "horas": 9.0, "barco": "IONA", "naviera": "P&O Cruises", "consignataria": "RUBINE", "pax": 6264, "de": "Bilbao", "a": "Vigo", "muelle": "TRASATLANTICOS", "factor": 0.5, "quedan": 3130}], "eventos": [], "pax": 6264, "quedan": 3130, "gente_eventos": 0, "total": 3130, "nivel": "fuerte", "estimado": true, "franja": "11:00 a 15:00"}, {"fecha": "2026-10-28", "dia_semana": 2, "escalas": [{"id": 758, "fecha": "2026-10-28", "llegada": "09:00", "salida": "19:00", "horas": 10.0, "barco": "MSC Virtuosa", "naviera": "MSC Crociere", "consignataria": "RUBINE", "pax": 6334, "de": "Bilbao", "a": "Le Havre", "muelle": "TRASATLANTICOS", "factor": 0.5, "quedan": 3170}, {"id": 757, "fecha": "2026-10-28", "llegada": "09:00", "salida": "18:30", "horas": 9.5, "barco": "Arcadia", "naviera": "P&O Cruises", "consignataria": "RUBINE", "pax": 2388, "de": "Southampton", "a": "Funchal", "muelle": "CALVO SOTELO SUR", "factor": 0.5, "quedan": 1190}], "eventos": [], "pax": 8722, "quedan": 4360, "gente_eventos": 0, "total": 4360, "nivel": "fuerte", "estimado": true, "franja": "10:00 a 14:00"}, {"fecha": "2026-10-29", "dia_semana": 3, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-10-30", "dia_semana": 4, "escalas": [{"id": 915, "fecha": "2026-10-30", "llegada": "12:00", "salida": "21:00", "horas": 9.0, "barco": "AIDAbella", "naviera": "AIDA Cruises", "consignataria": "PÉREZ Y CÍA", "pax": 2500, "de": "Dover", "a": "Leixoes", "muelle": "TRASATLANTICOS", "factor": 0.5, "quedan": 1250}], "eventos": [], "pax": 2500, "quedan": 1250, "gente_eventos": 0, "total": 1250, "nivel": "normal", "estimado": true, "franja": "13:00 a 17:00"}, {"fecha": "2026-10-31", "dia_semana": 5, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-11-01", "dia_semana": 6, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-11-02", "dia_semana": 0, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-11-03", "dia_semana": 1, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-11-04", "dia_semana": 2, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-11-05", "dia_semana": 3, "escalas": [{"id": 944, "fecha": "2026-11-05", "llegada": "08:00", "salida": "18:00", "horas": 10.0, "barco": "Mein Schiff Relax", "naviera": "TUI Cruises", "consignataria": "RUBINE", "pax": 4000, "de": "Le Havre", "a": "Lisboa", "muelle": "TRASATLANTICOS", "factor": 0.5, "quedan": 2000}], "eventos": [], "pax": 4000, "quedan": 2000, "gente_eventos": 0, "total": 2000, "nivel": "normal", "estimado": true, "franja": "09:00 a 13:00"}, {"fecha": "2026-11-06", "dia_semana": 4, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-11-07", "dia_semana": 5, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-11-08", "dia_semana": 6, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-11-09", "dia_semana": 0, "escalas": [{"id": 1181, "fecha": "2026-11-09", "llegada": "08:00", "salida": "18:00", "horas": 10.0, "barco": "MSC Virtuosa", "naviera": "MSC Crociere", "consignataria": "RUBINE", "pax": 6334, "de": "Southampton", "a": "Cadiz", "muelle": "TRASATLANTICOS", "factor": 0.5, "quedan": 3170}, {"id": 916, "fecha": "2026-11-09", "llegada": "10:00", "salida": "19:30", "horas": 9.5, "barco": "AIDAperla", "naviera": "AIDA Cruises", "consignataria": "PÉREZ Y CÍA", "pax": 3286, "de": "Southampton", "a": "Leixoes", "muelle": "CALVO SOTELO SUR", "factor": 0.5, "quedan": 1640}], "eventos": [], "pax": 9620, "quedan": 4810, "gente_eventos": 0, "total": 4810, "nivel": "fuerte", "estimado": true, "franja": "09:00 a 15:00"}, {"fecha": "2026-11-10", "dia_semana": 1, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-11-11", "dia_semana": 2, "escalas": [{"id": 946, "fecha": "2026-11-11", "llegada": "08:00", "salida": "18:00", "horas": 10.0, "barco": "Mein Schiff 3", "naviera": "TUI Cruises", "consignataria": "RUBINE", "pax": 2506, "de": "Agadir", "a": "Bremenhaven", "muelle": "CALVO SOTELO SUR", "factor": 0.5, "quedan": 1250}, {"id": 760, "fecha": "2026-11-11", "llegada": "09:00", "salida": "18:00", "horas": 9.0, "barco": "Ventura", "naviera": "P&O Cruises", "consignataria": "RUBINE", "pax": 3597, "de": "Arrecife", "a": "Southampton", "muelle": "TRASATLANTICOS", "factor": 0.5, "quedan": 1800}], "eventos": [], "pax": 6103, "quedan": 3050, "gente_eventos": 0, "total": 3050, "nivel": "fuerte", "estimado": true, "franja": "09:00 a 14:00"}, {"fecha": "2026-11-12", "dia_semana": 3, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-11-13", "dia_semana": 4, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-11-14", "dia_semana": 5, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-11-15", "dia_semana": 6, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-11-16", "dia_semana": 0, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-11-17", "dia_semana": 1, "escalas": [{"id": 1284, "fecha": "2026-11-17", "llegada": "07:30", "salida": "17:00", "horas": 9.5, "barco": "Norwegian Star", "naviera": "Norwegian Cruise Line", "consignataria": "RUBINE", "pax": 3000, "de": "Leixoes", "a": "Le Havre", "muelle": "TRASATLANTICOS", "factor": 0.5, "quedan": 1500}], "eventos": [], "pax": 3000, "quedan": 1500, "gente_eventos": 0, "total": 1500, "nivel": "normal", "estimado": true, "franja": "08:30 a 12:30"}, {"fecha": "2026-11-18", "dia_semana": 2, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-11-19", "dia_semana": 3, "escalas": [{"id": 761, "fecha": "2026-11-19", "llegada": "09:00", "salida": "18:00", "horas": 9.0, "barco": "IONA", "naviera": "P&O Cruises", "consignataria": "RUBINE", "pax": 6264, "de": "Vigo", "a": "Southampton", "muelle": "TRASATLANTICOS", "factor": 0.5, "quedan": 3130}], "eventos": [], "pax": 6264, "quedan": 3130, "gente_eventos": 0, "total": 3130, "nivel": "fuerte", "estimado": true, "franja": "10:00 a 14:00"}, {"fecha": "2026-11-20", "dia_semana": 4, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-11-21", "dia_semana": 5, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-11-22", "dia_semana": 6, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-11-23", "dia_semana": 0, "escalas": [{"id": 1156, "fecha": "2026-11-23", "llegada": "08:00", "salida": "16:00", "horas": 8.0, "barco": "Norwegian Star", "naviera": "Norwegian Cruise Line", "consignataria": "RUBINE", "pax": 3000, "de": "Le Havre", "a": "Leixoes", "muelle": "TRASATLANTICOS", "factor": 0.5, "quedan": 1500}], "eventos": [], "pax": 3000, "quedan": 1500, "gente_eventos": 0, "total": 1500, "nivel": "normal", "estimado": true, "franja": "09:00 a 13:00"}, {"fecha": "2026-11-24", "dia_semana": 1, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-11-25", "dia_semana": 2, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-11-26", "dia_semana": 3, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-11-27", "dia_semana": 4, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-11-28", "dia_semana": 5, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-11-29", "dia_semana": 6, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-11-30", "dia_semana": 0, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-12-01", "dia_semana": 1, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-12-02", "dia_semana": 2, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-12-03", "dia_semana": 3, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-12-04", "dia_semana": 4, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-12-05", "dia_semana": 5, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-12-06", "dia_semana": 6, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-12-07", "dia_semana": 0, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-12-08", "dia_semana": 1, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-12-09", "dia_semana": 2, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-12-10", "dia_semana": 3, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-12-11", "dia_semana": 4, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-12-12", "dia_semana": 5, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}, {"fecha": "2026-12-13", "dia_semana": 6, "escalas": [], "eventos": [], "pax": 0, "quedan": 0, "gente_eventos": 0, "total": 0, "nivel": "base", "estimado": false, "franja": ""}], "umbrales": {"fuerte": 3000, "normal": 1000}, "horizonte": "2026-11-23", "navieras_marcadas": 0, "navieras_total": 17}</script>
+<script>
+(() => {
+const D = JSON.parse(document.getElementById('datos').textContent);
+const NIV = {fuerte:'Día fuerte', normal:'Normal', tranquilo:'Tranquilo', base:'Sin barcos ni eventos'};
+const DS = ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
+const MES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+const nf = n => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const hoyIso = (() => { const d = new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); })();
+const porFecha = Object.fromEntries(D.dias.map(d => [d.fecha, d]));
+const fecha = iso => { const [y,m,d] = iso.split('-').map(Number); return new Date(Date.UTC(y,m-1,d)); };
+const iso = dt => dt.toISOString().slice(0,10);
+const lunesDe = s => { const d = fecha(s); d.setUTCDate(d.getUTCDate() - ((d.getUTCDay()+6)%7)); return iso(d); };
+const sumar = (s,n) => { const d = fecha(s); d.setUTCDate(d.getUTCDate()+n); return iso(d); };
+
+document.getElementById('act').textContent = D.generado ? 'Actualizado ' + D.generado.slice(8,10)+'/'+D.generado.slice(5,7)+' '+D.generado.slice(11) : '';
+if (D.navieras_total && D.navieras_marcadas < D.navieras_total) {
+  const a = document.getElementById('aviso');
+  a.hidden = false;
+  a.textContent = `Cuánta gente se queda en la Marina es todavía una estimación (la mitad del barco) para ${D.navieras_total - D.navieras_marcadas} de ${D.navieras_total} navieras. Se afina marcando en la hoja de afluencia si la gente de cada naviera se queda o se va de excursión.`;
+}
+
+// ---------- semana
+const primero = D.dias.length ? D.dias[0].fecha : hoyIso, ultimo = D.dias.length ? D.dias[D.dias.length-1].fecha : hoyIso;
+let semana = lunesDe(hoyIso < primero ? primero : hoyIso);
+function pintaSemana() {
+  const fin = sumar(semana, 6), a = fecha(semana), b = fecha(fin);
+  document.getElementById('st').textContent = `${a.getUTCDate()} ${MES[a.getUTCMonth()].slice(0,3)} – ${b.getUTCDate()} ${MES[b.getUTCMonth()].slice(0,3)}`;
+  document.getElementById('sp').disabled = semana <= primero;
+  document.getElementById('sn').disabled = sumar(semana, 7) > ultimo;
+  let h = '';
+  for (let i = 0; i < 7; i++) {
+    const f = sumar(semana, i), d = porFecha[f], dt = fecha(f);
+    const cls = 'day' + (f === hoyIso ? ' hoy' : '') + (f < hoyIso ? ' pasado' : '');
+    if (!d) { h += `<div class="${cls}"><div class="when"><b>${dt.getUTCDate()}</b><span>${DS[i]}</span></div><div class="vacio">Sin datos del puerto todavía</div></div>`; continue; }
+    const items = d.escalas.map(e => `<div class="item"><span class="t">${e.llegada}–${e.salida}</span><b>${e.barco}</b> <small>${e.naviera} · ${nf(e.pax)} pasajeros · se quedan ~${nf(e.quedan)}${d.estimado && e.factor===0.5 ? ' (estimación)' : ''}</small></div>`).join('')
+      + d.eventos.map(e => `<div class="item"><span class="t">${e.hora_inicio || ''}${e.hora_fin ? '–'+e.hora_fin : ''}</span><b>${e.que}</b> <small>${e.sitio}${e.asistencia ? ' · ~'+nf(e.asistencia)+' personas' : ''}</small></div>`).join('');
+    const resumen = d.total ? `~${nf(d.total)} personas por la zona` : '';
+    h += `<div class="${cls}"><div class="when"><b>${dt.getUTCDate()}</b><span>${f===hoyIso?'hoy':DS[i]}</span></div><div>
+      <div class="head"><span class="chip c-${d.nivel}">${NIV[d.nivel]}</span><span class="n">${resumen}</span></div>
+      ${items || '<div class="vacio">Día normal de barrio: sirve de referencia.</div>'}
+      ${d.franja ? `<div class="franja">Más gente de <b>${d.franja}</b></div>` : ''}
+    </div></div>`;
+  }
+  document.getElementById('semana').innerHTML = h;
+}
+document.getElementById('sp').onclick = () => { semana = sumar(semana, -7); pintaSemana(); };
+document.getElementById('sn').onclick = () => { semana = sumar(semana, 7); pintaSemana(); };
+
+// ---------- mes
+let mes = hoyIso.slice(0,7);
+function pintaMes() {
+  const [y, m] = mes.split('-').map(Number);
+  document.getElementById('mt').textContent = MES[m-1].charAt(0).toUpperCase() + MES[m-1].slice(1) + ' ' + y;
+  document.getElementById('mp').disabled = mes <= primero.slice(0,7);
+  document.getElementById('mn').disabled = mes >= ultimo.slice(0,7);
+  let h = DS.map(d => `<div class="h">${d[0]}</div>`).join('');
+  const off = (new Date(Date.UTC(y, m-1, 1)).getUTCDay() + 6) % 7;
+  for (let i = 0; i < off; i++) h += '<div class="cell pad"></div>';
+  const n = new Date(Date.UTC(y, m, 0)).getUTCDate();
+  for (let k = 1; k <= n; k++) {
+    const f = `${mes}-${String(k).padStart(2,'0')}`, d = porFecha[f];
+    const nivel = d ? d.nivel : 'base';
+    const que = d ? [...d.escalas.map(e => e.barco), ...d.eventos.map(e => e.que)].join(' · ') : '';
+    h += `<div class="cell l-${nivel}${f===hoyIso?' hoy':''}" data-f="${f}" title="${que}"><div class="d">${k}</div>${d && d.total ? `<div class="q">~${d.total >= 1000 ? (d.total/1000).toFixed(d.total >= 10000 ? 0 : 1).replace('.', ',') + ' mil' : nf(d.total)}</div>` : ''}</div>`;
+  }
+  document.getElementById('cal').innerHTML = h;
+  document.querySelectorAll('.cell[data-f]').forEach(c => c.onclick = () => { semana = lunesDe(c.dataset.f); cambia('semana'); });
+}
+document.getElementById('mp').onclick = () => { const [y,m] = mes.split('-').map(Number); const d = new Date(Date.UTC(y, m-2, 1)); mes = iso(d).slice(0,7); pintaMes(); };
+document.getElementById('mn').onclick = () => { const [y,m] = mes.split('-').map(Number); const d = new Date(Date.UTC(y, m, 1)); mes = iso(d).slice(0,7); pintaMes(); };
+document.getElementById('ley').innerHTML = ['fuerte','normal','tranquilo','base'].map(k => `<span class="chip c-${k}">${NIV[k]}</span>`).join('');
+
+function cambia(v) {
+  document.querySelectorAll('.tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.v === v));
+  document.getElementById('v-semana').hidden = v !== 'semana';
+  document.getElementById('v-mes').hidden = v !== 'mes';
+  if (v === 'semana') pintaSemana(); else pintaMes();
+  try { localStorage.setItem('afluencia-vista', v); } catch (e) {}
+}
+document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => cambia(b.dataset.v));
+
+document.getElementById('nota').innerHTML = `Cómo se calcula: pasajeros que da el puerto × la parte que suele quedarse en la zona según la naviera, más la gente de los eventos cercanos. <b>Día fuerte</b> desde ~${nf(D.umbrales.fuerte)} personas; <b>normal</b> desde ~${nf(D.umbrales.normal)}. La franja va de una hora después de que atraca el barco a unas cinco horas después. Fuente de las escalas: Autoridad Portuaria de A Coruña (calendario provisional; si cambia, la página se actualiza sola cada noche)${D.horizonte ? ', publicado hasta el ' + D.horizonte.split('-').reverse().join('/') : ''}.`;
+
+let v0 = 'semana'; try { v0 = localStorage.getItem('afluencia-vista') || 'semana'; } catch (e) {}
+cambia(v0);
+})();
+</script>
+</body>
+</html>
